@@ -20,8 +20,6 @@
 
 body {
     font-family: 'Open sans', sans-serif;
-    margin: 0;
-    padding: 0;
     max-width: 100%;
     min-height: 100vh;
     display: grid;
@@ -57,6 +55,7 @@ body {
     display: flex;
     width: 100%;
     flex-direction: row;
+    overflow-x: hidden;
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--padding);
@@ -113,16 +112,6 @@ body {
     z-index: 1; 
 }
 
-.circle {
-    position: absolute;
-    top: -4em;
-    right: 0px;
-    width: 500px; 
-    height: 500px; 
-    border-radius: 50%; 
-    background: var(--accent-color); 
-    z-index: 1;
-}
 
 .hero-section {
     grid-area: hero;
@@ -132,8 +121,9 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 4em; 
+    max-width: 100%;
+    font-family: 'Open sans';
+    
 }
 
 .hero-section .text-section {
@@ -141,8 +131,9 @@ body {
 }
 
 .hero-section h1 {
-    font-size: xxx-large;
+    font-size: xx-large;
     font-weight: 300;
+   
 }
 
 .hero-section p {
@@ -150,19 +141,12 @@ body {
     font-weight: 300;
 }
 
-.slackId-section {
-    position: absolute;
-    right: 4em;
-    top: 4em;
-    z-index: 5;
-}
-
-.slackId-section:hover {
-    transform: scale(1.05);
-    transition: ease-in-out 0.75s;
-}
-
-.slackId-section p {
+ 
+ .hero-section .slackId-section:hover{
+   transform: scale(1.05);
+   transition: ease-in-out 0.75s;
+ }
+ .hero-section .slackId-section p{
     border: var(--border-width) solid var(--accent-color);
     padding: var(--padding);
     background-color: var(--accent-color);
@@ -171,10 +155,13 @@ body {
     width: fit-content;
     top: -4em;
     right: -5em;
-}
+ }
 
-.about-me {
-    grid-area: about;
+ /* about me */
+
+
+.about-me{
+    grid-area: "about";
     display: flex;
     gap: 10px;
     margin-top: 40px;
@@ -183,36 +170,39 @@ body {
     align-items: center;
     width: 100%;
 }
-
-.about-me .text {
+.about-me .text{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 40%;
+    font-family: 'Open sans';
+    
+  
 }
-
-.about-me .text .title {
+.about-me .text .title{
     font-size: xxx-large;
     font-weight: 300;
 }
-
-.about-me .text p {
+.about-me .text p{
     font-size: x-large;
+    padding-bottom: 40px;
 }
 
-.about-me .text .links a {
+.about-me .text .links a{
     padding: 12px;
     color: #150303;
-    text-decoration: none;
-    font-size: medium;
-    border: var(--border-width) solid var(--accent-color);
+   text-decoration: none;
+   font-size: medium;
+   border: var(--border-width) solid var(--accent-color);
 }
 
 .goals {
-    grid-area: goals;
+    grid-area: 'goals';
     display: flex;
     flex-direction: column;
     padding: var(--section-padding);
     text-align: center;
+    font-family: 'Open Sans';
 }
 
 .goals h2 {
@@ -240,28 +230,25 @@ body {
     text-align: left;
     animation: fadeIn 1.5s ease-in-out;
     background-color: var(--accent-color);
+    
 }
-
-.goal-card:hover {
+.goal-card:hover{
     transform: scaleX(1.05);
 }
-
-.goal-card h3 {
+.goal-card h3{
     font-size: x-large;
 }
-
-.goal-card p {
+.goal-card p{
     font-size: large;
     font-style: italic;
 }
-
-.goal-container {
-    display: flex;
-    flex-direction: row;
+.goal-container{
+     display: flex;
+     flex-direction: row;
     gap: 12px;
     width: auto;
+    
 }
-
 .goals ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -272,49 +259,52 @@ body {
     margin-bottom: 10px;
 }
 
-.footer {
-    grid-area: footer;
+
+
+/* footer */
+.footer{
+    grid-area: "footer";
     background-color: var(--footer-bg-color); 
     text-align: center;
     width: 100%;
     flex-direction: column;
     padding: 40px;
+
 }
 
-.footer .reachout p {
+.footer .reachout p{
     padding: 40px;
     text-align: center;
     font-size: x-large;
     font-weight: 300;
+    font-family: 'Open-sans';
 }
-
-.footer .contact-form {
+.footer .contact-form{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 12px;
     text-align: justify;
+   
+    
 }
-
-.footer .contact-form form {
+.footer .contact-form form{
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.footer .contact-form form input {
+.footer .contact-form form input{
     background-color: var(--footer-bg-color);
     padding: var(--padding);
     border: none;
     border-bottom: var(--border-width) solid black;
 }
-
-.footer .contact-form form input::placeholder {
-    color: var(--text-color);
-    font-size: medium;
+.footer .contact-form form input::placeholder{
+ color: var(--text-color);
+ font-size: medium;
+ font-family: 'Open sans';
 }
-
-.footer .contact-form .form-button {
+.footer .contact-form .form-button{
     width: fit-content;
     margin-top: 20px;
     align-self: flex-end;
@@ -322,55 +312,69 @@ body {
     font-size: medium;
     color: #ffffff;
     background-color: #150303;
+    font-family: 'Open sans';
     border-radius: 12px;
+   
     transition: background-color color 2s;
 }
-
-.footer .contact-form .form-button:hover {
+.footer .contact-form .form-button:hover{
     background-color: #ffffff;
     color: #150303;
 } 
-
-.footer .contact span {
+.footer .contact{
+    font-family: 'Open sans';
+    
+    
+}
+.footer .contact span{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-bet;
+    
 }
-
-.footer .contact span a {
-    border-radius: 50%;
-    background-color: #03e54d;
-    padding: var(--padding)
+.footer .contact span a{
+ border-radius: 50%;
+ background-color: #03e54d;
+ padding: var(--padding)
 }
-
-.footer .contact span i {
+.footer .contact span i{
     font-size: 25px;
     color: white;
 }
-
-.footer .contact span a:hover {
+.footer .contact span a:hover{
     background-color: #150303;
     transform: rotateY(180deg);
     transition: 0.75s ease-in;
 }
 
-.footer .footnote {
+.footer .footnote{
     font-size: 14px;
     margin-top: 20px;
-}
-
+    font-family: 'Open sans';
+} 
 
 
 @media screen and (min-width:994px){
-    .hero-section .slackId-section {
-        position: absolute;
-        right: 4em;
-        z-index: 5;
-        
-      } 
+     .logo{
+    font-size: x-large;
+    font-weight: 700;
+} 
+    .hero-section{
+        padding-left: 2em;
+        height: auto;
+    }
+    .hero-section h1{
+        padding-bottom: 20px;
+    }
+
+      .hero-section .slackId-section p{
+        left: 3em;
+        top: -3em;
+      }
+
 }
 /* Responsive screens */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 601px) and (max-width:993px) {
     #navbar {
         display: flex;
         justify-content: space-between;
