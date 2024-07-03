@@ -37,7 +37,9 @@ body {
         "footer";
     grid-template-rows: auto auto auto auto auto auto;
 }
-
+.header{
+    max-width: 100%;
+}
 
 #navbar{
     position: fixed;
@@ -58,9 +60,11 @@ body {
 }
 #day-time {
     font-family: 'Open Sans', sans-serif;
-    white-space: nowrap;
+    white-space: no-wrap;
     overflow: hidden;
     width: 100%;
+    text-align: center;
+
 }
 
 .current-day, .current-time {
@@ -70,7 +74,6 @@ body {
 }
 .logo { 
     padding-right: 40px;
-    border-right: var(--border-width) solid black; 
     display: flex;
     align-items: center;
     height: 100%;
@@ -86,7 +89,6 @@ body {
     text-decoration: none;
     padding: var(--padding);
     color: var(--text-color);
-    border-right: var(--border-width) solid black; 
     display: flex;
     align-items: center;
     height: 100%;
@@ -529,6 +531,9 @@ body {
 
 /* Mobile */
 @media screen and (max-width: 600px) {
+    .body{
+        font-size: medium;
+    }
     #navbar {
         display: flex;
         justify-content: space-between;
@@ -573,6 +578,7 @@ body {
        text-align: center;
        padding-top: 5em;
        width: 80%;
+       font-size: larger;
     }
     .hero-section .slackId-section{
         position: relative;
@@ -580,12 +586,15 @@ body {
         left: 0;
       } 
     
+      .hero-section .slackId-section p{
+        font-size: large;
+      }
     .hero-section h1 {
-        font-size: x-large;
+        font-size: xx-large;
     }
 
     .hero-section p {
-        font-size: medium;
+        font-size: large;
     }
 
      .circle {
@@ -595,20 +604,27 @@ body {
     .about-me{
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 40px;
+
     }
     .about-me img{
         display: none;
     }
+    .about-me .text{
+        max-width: 60%;
+    }
     .about-me .text .title{
-        font-size: x-large;
-        font-weight: 300;
+        font-size: xxx-large;
+        font-weight: 600;
     }
     .about-me .text p{
-        font-size: large;
+        font-size: larger;
+       
     }
     .about-me .text .links a{
         display: flex;
-        justify-content: space-between;
         width: fit-content;
     }
     .goals div {
@@ -616,7 +632,8 @@ body {
 
     }
     .goals h2 {
-        font-size: x-large;
+        font-size: xxx-large;
+        font-weight:600;
     }
     .goal-container {
         flex-direction: column;
@@ -629,15 +646,15 @@ body {
     }
 
     .goals p.title {
-        font-size: medium;
+        font-size: x-large;
     }
 
     .goal-card h3 {
-        font-size: medium;
+        font-size: larger;
     }
 
     .goal-card p {
-        font-size: small;
+        font-size: larger;
     }
     .footer .contact-form {
         flex-direction: column;
@@ -650,7 +667,7 @@ body {
     }
 
     .footer .contact-form .form-button {
-        align-self: center;
+        align-self: flex-start;
     }
     .footer .contact span {
         display: flex;

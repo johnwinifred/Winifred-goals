@@ -14,17 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function updateDayTime() {
     const now = new Date();
-    const optionsDay = { 
-        weekday: 'long',   
-    };
-    const optionsTime = {
-        hour: 'numeric', 
-        minute: 'numeric', 
-        second: 'numeric',
-        hour12: true
-    };
-    const currentDay = now.toLocaleDateString('en-US', optionsDay);
-    const currentTime = now.toLocaleTimeString('en-US', optionsTime);
+    const currentDayIndex = now.getDay();
+    const currentDayName =["Sunday", "Monday" ,"Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const currentDay = currentDayName[currentDayIndex];
+    const currentTime = now.toUTCString().split(' ')[4];
     
     document.querySelector('.current-day').innerText = currentDay;
     document.querySelector('.current-time').innerText = currentTime;
