@@ -6,20 +6,16 @@
     --footer-bg-color: #e4e1e1;
     --text-color: #150303;
     --accent-color: #00f84a;
-    --section-padding:60px;
+    --section-padding: 60px;
     --padding: 20px;
     --font-family: 'Open Sans';
     --border-width: 1px;
 }
 
-.open-sans-logo {
-  font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-size: x-large;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -37,33 +33,14 @@ body {
         "footer";
     grid-template-rows: auto auto auto auto auto auto;
 }
-.header{
-    max-width: 100%;
-}
-
-#navbar{
-    position: fixed;
-    grid-area: "nav";
-    background-color: inherit;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    border-bottom: var(--border-width) solid black;
-    justify-content: space-evenly;
-    padding: 0 var(--padding);
-    z-index: 8;
-}
-#navbar.scrolled{
-    background-color: var(--accent-color);
-}
 #day-time {
     font-family: 'Open Sans', sans-serif;
     white-space: no-wrap;
     overflow: hidden;
-    width: 100%;
+    max-width: 100%;
     text-align: center;
+    z-index: 3;
+    background-color: white;
 
 }
 
@@ -72,20 +49,30 @@ body {
     padding-right: 12px;
     animation: moveAcrossScreen 10s linear infinite;
 }
-.logo { 
-    padding-right: 40px;
+
+#navbar {
+    position: fixed;
+    grid-area: nav;
+    background-color: inherit;
     display: flex;
+    width: 100%;
+    flex-direction: row;
     align-items: center;
-    height: 100%;
-    font-family: 'Open sans';
+    justify-content: space-between;
+    padding: 0 var(--padding);
+    z-index: 8;
 }
 
-.nav-links{
+#navbar.scrolled {
+    background-color: var(--accent-color);
+}
+
+.nav-links {
     display: flex;
     height: 100%;
-    
 }
-.nav-links a{
+
+.nav-links a {
     text-decoration: none;
     padding: var(--padding);
     color: var(--text-color);
@@ -96,16 +83,16 @@ body {
     font-weight: 600;
     font-family: 'Open sans';
 }
-.nav-links a.menu-icon{
+
+.nav-links a.menu-icon {
     display: none;
 }
-.nav-links a:hover{
+
+.nav-links a:hover {
     background-color: white;
     transform: scale(1.05);
 }
-.nav-links a:last-child{
-    border-right: none;
-}
+
 .nav-links.show a {
     display: block;
     text-align: justify;
@@ -114,7 +101,6 @@ body {
     height: 100%;
     border-right: none;
     background-color: var(--accent-color);
-    
 }
 
 .nav-links.show {
@@ -124,10 +110,8 @@ body {
     top: 60px;
     left: 0;
     width: 100%;
-    
     z-index: 1; 
 }
-
 
 .circle {
     position: absolute;
@@ -137,21 +121,19 @@ body {
     height: 500px; 
     border-radius: 50%; 
     background: var(--accent-color); 
-    z-index: 3;
+    z-index: 1;
 }
-/* hero-section */
+
 .hero-section {
-    grid-area: 'hero';
+    grid-area: hero;
     background-attachment: fixed;
     background-color: var(--nav-bg-color);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-width: 100%;
-    font-family: 'Open sans';
+    width: 100%;
     padding: 4em; 
-    
 }
 
 .hero-section .text-section {
@@ -168,18 +150,19 @@ body {
     font-weight: 300;
 }
 
- .hero-section .slackId-section {
-   position: absolute;
-   right: 4em;
-   top: 4em;
-   z-index: 5;
-   
- } 
- .hero-section .slackId-section:hover{
-   transform: scale(1.05);
-   transition: ease-in-out 0.75s;
- }
- .hero-section .slackId-section p{
+.slackId-section {
+    position: absolute;
+    right: 4em;
+    top: 4em;
+    z-index: 5;
+}
+
+.slackId-section:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.75s;
+}
+
+.slackId-section p {
     border: var(--border-width) solid var(--accent-color);
     padding: var(--padding);
     background-color: var(--accent-color);
@@ -188,52 +171,48 @@ body {
     width: fit-content;
     top: -4em;
     right: -5em;
- }
+}
 
- /* about me */
-
-
-.about-me{
-    grid-area: "about";
+.about-me {
+    grid-area: about;
     display: flex;
     gap: 10px;
     margin-top: 40px;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-.about-me .text{
+
+.about-me .text {
     display: flex;
     flex-direction: column;
     max-width: 40%;
-    font-family: 'Open sans';
-    
-  
 }
-.about-me .text .title{
+
+.about-me .text .title {
     font-size: xxx-large;
     font-weight: 300;
 }
-.about-me .text p{
+
+.about-me .text p {
     font-size: x-large;
 }
 
-.about-me .text .links a{
+.about-me .text .links a {
     padding: 12px;
     color: #150303;
-   text-decoration: none;
-   font-size: medium;
-   border: var(--border-width) solid var(--accent-color);
+    text-decoration: none;
+    font-size: medium;
+    border: var(--border-width) solid var(--accent-color);
 }
 
 .goals {
-    grid-area: 'goals';
+    grid-area: goals;
     display: flex;
     flex-direction: column;
     padding: var(--section-padding);
     text-align: center;
-    font-family: 'Open Sans';
 }
 
 .goals h2 {
@@ -261,25 +240,28 @@ body {
     text-align: left;
     animation: fadeIn 1.5s ease-in-out;
     background-color: var(--accent-color);
-    
 }
-.goal-card:hover{
+
+.goal-card:hover {
     transform: scaleX(1.05);
 }
-.goal-card h3{
+
+.goal-card h3 {
     font-size: x-large;
 }
-.goal-card p{
+
+.goal-card p {
     font-size: large;
     font-style: italic;
 }
-.goal-container{
-     display: flex;
-     flex-direction: row;
+
+.goal-container {
+    display: flex;
+    flex-direction: row;
     gap: 12px;
     width: auto;
-    
 }
+
 .goals ul {
     list-style-type: disc;
     margin-left: 20px;
@@ -290,52 +272,49 @@ body {
     margin-bottom: 10px;
 }
 
-
-
-/* footer */
-.footer{
-    grid-area: "footer";
+.footer {
+    grid-area: footer;
     background-color: var(--footer-bg-color); 
     text-align: center;
-    max-width: 100%;
+    width: 100%;
     flex-direction: column;
     padding: 40px;
-
 }
 
-.footer .reachout p{
+.footer .reachout p {
     padding: 40px;
     text-align: center;
     font-size: x-large;
     font-weight: 300;
-    font-family: 'Open-sans';
 }
-.footer .contact-form{
+
+.footer .contact-form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 12px;
     text-align: justify;
-   
-    
 }
-.footer .contact-form form{
+
+.footer .contact-form form {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.footer .contact-form form input{
+.footer .contact-form form input {
     background-color: var(--footer-bg-color);
     padding: var(--padding);
     border: none;
     border-bottom: var(--border-width) solid black;
 }
-.footer .contact-form form input::placeholder{
- color: var(--text-color);
- font-size: medium;
- font-family: 'Open sans';
+
+.footer .contact-form form input::placeholder {
+    color: var(--text-color);
+    font-size: medium;
 }
-.footer .contact-form .form-button{
+
+.footer .contact-form .form-button {
     width: fit-content;
     margin-top: 20px;
     align-self: flex-end;
@@ -343,44 +322,43 @@ body {
     font-size: medium;
     color: #ffffff;
     background-color: #150303;
-    font-family: 'Open sans';
     border-radius: 12px;
-   
     transition: background-color color 2s;
 }
-.footer .contact-form .form-button:hover{
+
+.footer .contact-form .form-button:hover {
     background-color: #ffffff;
     color: #150303;
 } 
-.footer .contact{
-    font-family: 'Open sans';
-}
-.footer .contact span{
+
+.footer .contact span {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
 }
-.footer .contact span a{
- border-radius: 50%;
- background-color: #03e54d;
- padding: var(--padding)
+
+.footer .contact span a {
+    border-radius: 50%;
+    background-color: #03e54d;
+    padding: var(--padding)
 }
-.footer .contact span i{
+
+.footer .contact span i {
     font-size: 25px;
     color: white;
 }
-.footer .contact span a:hover{
+
+.footer .contact span a:hover {
     background-color: #150303;
     transform: rotateY(180deg);
     transition: 0.75s ease-in;
 }
 
-.footer .footnote{
+.footer .footnote {
     font-size: 14px;
     margin-top: 20px;
-    font-family: 'Open sans';
-} 
+}
+
 
 
 @media screen and (min-width:994px){
@@ -392,7 +370,7 @@ body {
       } 
 }
 /* Responsive screens */
-@media screen and (min-width:601px) and (max-width: 993px) {
+@media screen and (min-width: 601px) {
     #navbar {
         display: flex;
         justify-content: space-between;
@@ -433,14 +411,20 @@ body {
 
     .hero-section .text-section {
         padding-top: 4em;
-        width:50%;
+        width:40%;
         text-align: justify;
+    }
+    .hero-section .text-section h1{
+        font-size: xx-large;
     }
     .hero-section .slackId-section{
         position: relative; 
-       top: 7em; 
+       top: 3em; 
        right: -1em;
         
+    }
+    .hero-section .slackId-section p{
+        left: 2em;
     }
     .hero-section .slackId-section img{
         border-radius: 50%;
@@ -462,6 +446,7 @@ body {
     .about-me{
         display: flex;
         flex-direction: column;
+        padding: 0;
     }
     
     .about-me .text .title{
@@ -533,12 +518,14 @@ body {
 @media screen and (max-width: 600px) {
     .body{
         font-size: medium;
+        overflow-x: hidden;
     }
     #navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         max-width: 100%;
+        overflow-x: hidden;
         
     }
    
@@ -566,6 +553,7 @@ body {
         border: none;
     }
     .hero-section {
+        padding: 1em;
         display: flex;
         flex-direction: column;
         /* justify-content: center; */
@@ -604,9 +592,9 @@ body {
     .about-me{
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-between;
         width: 100%;
-        padding: 40px;
+        padding: 20px;
 
     }
     .about-me img{
@@ -658,12 +646,12 @@ body {
     }
     .footer .contact-form {
         flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
+        max-width: 100%;
+        align-items: center;
     }
     .footer .reachout p {
         font-size: large;
-        width: 60%;
+        
     }
 
     .footer .contact-form .form-button {
