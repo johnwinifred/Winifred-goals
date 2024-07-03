@@ -13,44 +13,109 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-    <nav id="navbar">
-        <div class="logo open-sans-logo">Winne's Goals.</div>
+    <header>
+        <div id="day-time">
+            <span class="current-day" data-testid="currentDay"> </span>
+            <span class="current-time" data-testid="currentTimeUTC"></span>
+        </div>
+
+    </header>
+    <nav id="navbar" class="navbar">
+        <div class="logo open-sans-logo">
+            Winne's Goals.
+        </div>
         <div class="nav-links">
+        <a href="javascript:void(0)" class="menu-icon" onclick="toggleMenu()">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
         <a href="#hero">Home</a>
         <a href="#about">About Me</a>
         <a href="#goals">Goals</a>
         <a href="#footer">Contact</a>
-        <a href="mailto:winifredjohnchidera123@gmail.com" style="text-decoration: underline;">Fire Me An Email</a>
-        </div>
+        <a href="mailto:winifredjohnchidera123@gmail.com" data-testid="slackEmail" style="text-decoration: underline;">Slack Email</a>
+        
+    </div>
     </nav>
     <div class="circle"></div>
     <section id="hero" class="hero-section">
         <div class="text-section">
-            <h1>Software Developer <br> & Technical Writer</h1>
+            <h1>Software Developer <br>&Technical Writer</h1>
             <p>Hi, I'm Winifred John</p>
             <p>My goal is to transform innovative ideas into functional and impactful products</p>
         </div>
-        <div class="image-section">
+        <div class="slackId-section" >
+            <img src="images/Slackprofilepicture 400x400.png" data-testid="slackProfilePicture" alt="">
+             <p class="slack-name" data-testid="slackDisplayName">SlackName: Winifred John</p>
         </div>
+
     </section>
     <section id="about" class="about-me">
-        <div class="card-1">
-            <p>About-me</p>
-            <p></p>
-            <hr>
+        <div class="image">
+            <img src="/images/about-me 403x400.jpg" alt="">
         </div>
-        <div class="card-2">
-            <p>Career roadmap</p>
+       <div class="text">
+        <p class="title">about.</p>
+        <p>I'm a Software Developer and Technical Writer based in Nigeria</p>
+        <p>Since 2020, I have been turning complex problems into simple, intuitive solutions for users. When I am not coding or writing, you will find me reading, travelling or playing mobile games.</p>
+        <div class="links">
+            <ul>
+            <a href="https://hng.tech/learn" data-testid="hngLink">HNG Learn</a>
+            <a href="https://keyword.dog/" data-testid="keywordLink">Keyword.dog</a>
+            <a href="https://scrapeanyweb.site/" data-testid="scrapeanywebLink">Scrapeanyweb</a>
+            </ul>
+        </div>
+       </div>
+
+           
+     
+    </section>
+
+    
+
+    <section id="goals" class="goals">
+
+            <h2>goals.</h2>
+        <div class="goal-container">
+            <div class="goal-card">
+                <h3>Skill Development</h3>
+                <p>February 2024 - December 2024</p>
+                <ul>
+                    <li>Developing my skills in Web 2 and Web 3 Technologies</li>
+                    <li>Learn Tech Entrepreneurship, Business Development</li>
+                    <li>Build my Network in Tech Communities</li>
+                    <li>Get Mentorship from Tech Business Founders</li>
+                </ul>
+            </div>
+            <div class="goal-card">
+                <h3>Building Phase </h3>
+                <p>January 2025 - December 2025</p>
+                <ul>
+                    <li>Start with Open-source project development</li>
+                    <li>Participate in Hackathons and Pitch desks</li>
+                    <li>Build and get grants for projects</li>
+                    <li>Collaborate with other founders and builders</li>
+                </ul>
+            </div>
+            <div class="goal-card">
+                <h3>Building Minimum Viable Product</h3>
+                <p>January 2026 - December 2026</p>
+                <ul>
+                    <li>MVP development</li>
+                    <li>Secure Funding</li>
+                    <li>Continue improving on the project</li>
+                </ul>
+            </div>
         </div>
     </section>
-    <section id="goals" class="goals"></section>
+    
+    
     <footer id="footer" class="footer">
         <div class="reachout">
             <p>Hi Guys 🖐, I’m a Developer and Technical Writer, based in Nigeria. Currently a freelancer. You can reach out to me using any of the contact info below.</p>
         </div>
         <hr>
         <div class="contact-form">
-            <!-- form -->
+            
              <form action="" class="form">
                 <h3>DROP A LINE</h3>
                 <input type="text" placeholder="Your Name">
@@ -59,7 +124,7 @@
                 <input type="text" placeholder="Message">
                 <button class="form-button">Send Message</button>
              </form>
-            <!-- Contact me -->
+            
            <div class="contact">
             <h3>CONTACT ME</h3>
             <p>Uyo, Nigeria</p>
@@ -81,6 +146,6 @@
        <p class="footnote">Copyright ©2024 All rights reserved | This website is built by Winifred John for <a href="https://hng.tech/">HNG Internship</a> </p>
            
       
-    </footer>
+    </footer> 
 </body>
 </html>

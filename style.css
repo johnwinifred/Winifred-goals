@@ -1,13 +1,13 @@
 :root {
-    --nav-bg-color: #53fa79;
+    --nav-bg-color: #e4e1e1;
     --hero-bg-color: #53fa79;
     --about-bg-color: #ffffff;
     --goals-bg-color: #ffffff;
-    --footer-bg-color: #01ff56;
+    --footer-bg-color: #e4e1e1;
     --text-color: #150303;
     --accent-color: #00f84a;
+    --section-padding:60px;
     --padding: 20px;
-    --section-padding: 60px;
     --font-family: 'Open Sans';
     --border-width: 1px;
 }
@@ -35,8 +35,9 @@ body {
         "about"
         "goals"
         "footer";
-    grid-template-rows: auto 1fr auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
 }
+
 
 #navbar{
     position: fixed;
@@ -44,19 +45,30 @@ body {
     background-color: inherit;
     display: flex;
     width: 100%;
-    height: 60px;
     flex-direction: row;
     align-items: center;
     box-sizing: border-box;
     border-bottom: var(--border-width) solid black;
     justify-content: space-evenly;
     padding: 0 var(--padding);
-    z-index: 2;
+    z-index: 8;
 }
 #navbar.scrolled{
-    background-color: var(--nav-bg-color);
+    background-color: var(--accent-color);
 }
-.logo{ 
+#day-time {
+    font-family: 'Open Sans', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+
+.current-day, .current-time {
+    display: inline-block;
+    padding-right: 12px;
+    animation: moveAcrossScreen 10s linear infinite;
+}
+.logo { 
     padding-right: 40px;
     border-right: var(--border-width) solid black; 
     display: flex;
@@ -64,42 +76,70 @@ body {
     height: 100%;
     font-family: 'Open sans';
 }
+
 .nav-links{
     display: flex;
     height: 100%;
+    
 }
 .nav-links a{
     text-decoration: none;
-    padding: 0 var(--padding);
+    padding: var(--padding);
     color: var(--text-color);
     border-right: var(--border-width) solid black; 
     display: flex;
     align-items: center;
     height: 100%;
-    font-size: large;
+    font-size: larger;
     font-weight: 600;
     font-family: 'Open sans';
 }
+.nav-links a.menu-icon{
+    display: none;
+}
 .nav-links a:hover{
-    background-color: var(--accent-color);
+    background-color: white;
     transform: scale(1.05);
 }
 .nav-links a:last-child{
     border-right: none;
 }
-.circle{
-    position: absolute;
-    top: -10em;
-    right: -40px;
-    width: 50vw; 
-    height: 100vh; 
-    border-radius: 50%; 
-    background: var(--accent-color); 
-    z-index: 1;
+.nav-links.show a {
+    display: block;
+    text-align: justify;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    border-right: none;
+    background-color: var(--accent-color);
     
 }
-.hero-section{
-    grid-area: "hero";
+
+.nav-links.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    
+    z-index: 1; 
+}
+
+
+.circle {
+    position: absolute;
+    top: -4em;
+    right: 0px;
+    width: 500px; 
+    height: 500px; 
+    border-radius: 50%; 
+    background: var(--accent-color); 
+    z-index: 3;
+}
+/* hero-section */
+.hero-section {
+    grid-area: 'hero';
     background-attachment: fixed;
     background-color: var(--nav-bg-color);
     display: flex;
@@ -108,29 +148,149 @@ body {
     justify-content: space-between;
     max-width: 100%;
     font-family: 'Open sans';
-    padding: 4em;
-     
+    padding: 4em; 
+    
 }
-.hero-section .text-section{
+
+.hero-section .text-section {
     width: 45%;
 }
-.hero-section h1{
+
+.hero-section h1 {
     font-size: xxx-large;
     font-weight: 300;
 }
-.hero-section p{
+
+.hero-section p {
     font-size: x-large;
     font-weight: 300;
 }
-.hero-section .image-section{
-    
-}
+
+ .hero-section .slackId-section {
+   position: absolute;
+   right: 4em;
+   top: 4em;
+   z-index: 5;
+   
+ } 
+ .hero-section .slackId-section:hover{
+   transform: scale(1.05);
+   transition: ease-in-out 0.75s;
+ }
+ .hero-section .slackId-section p{
+    border: var(--border-width) solid var(--accent-color);
+    padding: var(--padding);
+    background-color: var(--accent-color);
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    top: -4em;
+    right: -5em;
+ }
+
+ /* about me */
+
+
 .about-me{
     grid-area: "about";
+    display: flex;
+    gap: 10px;
+    margin-top: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }
-.goals{
-    grid-area: "goals";
+.about-me .text{
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    font-family: 'Open sans';
+    
+  
 }
+.about-me .text .title{
+    font-size: xxx-large;
+    font-weight: 300;
+}
+.about-me .text p{
+    font-size: x-large;
+}
+
+.about-me .text .links a{
+    padding: 12px;
+    color: #150303;
+   text-decoration: none;
+   font-size: medium;
+   border: var(--border-width) solid var(--accent-color);
+}
+
+.goals {
+    grid-area: 'goals';
+    display: flex;
+    flex-direction: column;
+    padding: var(--section-padding);
+    text-align: center;
+    font-family: 'Open Sans';
+}
+
+.goals h2 {
+    font-size: xxx-large;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.goals p.title {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.goal-card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    width: fit-content; 
+    max-width: 600px; 
+    text-align: left;
+    animation: fadeIn 1.5s ease-in-out;
+    background-color: var(--accent-color);
+    
+}
+.goal-card:hover{
+    transform: scaleX(1.05);
+}
+.goal-card h3{
+    font-size: x-large;
+}
+.goal-card p{
+    font-size: large;
+    font-style: italic;
+}
+.goal-container{
+     display: flex;
+     flex-direction: row;
+    gap: 12px;
+    width: auto;
+    
+}
+.goals ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: var(--text-color);
+}
+
+.goals ul li {
+    margin-bottom: 10px;
+}
+
+
+
+/* footer */
 .footer{
     grid-area: "footer";
     background-color: var(--footer-bg-color); 
@@ -213,11 +373,322 @@ body {
     transform: rotateY(180deg);
     transition: 0.75s ease-in;
 }
-/* .footer .contact span i:hover{
-   
-} */
+
 .footer .footnote{
     font-size: 14px;
     margin-top: 20px;
     font-family: 'Open sans';
+} 
+
+
+@media screen and (min-width:994px){
+    .hero-section .slackId-section {
+        position: absolute;
+        right: 4em;
+        z-index: 5;
+        
+      } 
+}
+/* Responsive screens */
+@media screen and (min-width:601px) and (max-width: 993px) {
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: none;
+    }
+
+    .nav-links.show a {
+        display: block;
+    }
+
+    .nav-links a.menu-icon {
+        display: block;
+        
+    }
+
+    .logo {
+        padding: 20px;
+        border: none;
+    }
+    .hero-section {
+        display: flex;
+        flex-direction: row;
+         padding: 2em;
+        justify-content: space-between;
+        align-items:center;
+        max-height: fit-content;
+        padding-bottom: 0;
+        
+    }
+
+    .hero-section .text-section {
+        padding-top: 4em;
+        width:50%;
+        text-align: justify;
+    }
+    .hero-section .slackId-section{
+        position: relative; 
+       top: 7em; 
+       right: -1em;
+        
+    }
+    .hero-section .slackId-section img{
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+    }
+    .hero-section h1 {
+        font-size: xxx-large;
+        font-weight: 300;
+    }
+
+    .hero-section p {
+        font-size: x-large;
+    }
+
+    .circle {
+        display: none;
+    }
+    .about-me{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .about-me .text .title{
+        font-size: xx-large;
+        font-weight: 600;
+    }
+    .about-me .text p{
+        font-size: x-large;
+    }
+    .about-me .text .links a{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        justify-content: space-between;
+    }
+    
+    .goals div {
+        width: 100%;
+    }
+    .goal-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .goal-card {
+        max-width: 80%;
+    }
+
+    .goals h2 {
+        font-size: xx-large;
+        font-weight: 600;
+    }
+
+    .goals p.title {
+        font-size: large;
+        
+    }
+
+    .goal-card h3 {
+        font-size: large;
+    }
+
+    .goal-card p {
+        font-size: medium;
+    }
+
+    .footer .contact-form {
+        flex-direction: column;
+    }
+
+    .footer .contact-form form {
+        width: 100%;
+    }
+
+    .footer .contact span {
+        display: flex;
+        justify-content: flex-start;
+        gap: 12px;
+        
+    } 
+
+
+    .footer .reachout p {
+        padding: 20px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        
+    }
+   
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: none;
+       
+    }
+
+    .nav-links.show a {
+        display: block;
+    }
+
+    .nav-links a.menu-icon {
+        display: block;
+        border: none;
+        
+    }
+
+    .logo {
+        padding: 20px;
+        border: none;
+    }
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        gap: 20px;
+        align-items: center;
+        max-height:fit-content;
+        max-width: 100%;
+    }
+    .hero-section .text-section{
+       text-align: center;
+       padding-top: 5em;
+       width: 80%;
+    }
+    .hero-section .slackId-section{
+        position: relative;
+        right: 0;
+        left: 0;
+      } 
+    
+    .hero-section h1 {
+        font-size: x-large;
+    }
+
+    .hero-section p {
+        font-size: medium;
+    }
+
+     .circle {
+        display: none;
+    
+    }   
+    .about-me{
+        display: flex;
+        flex-direction: column;
+    }
+    .about-me img{
+        display: none;
+    }
+    .about-me .text .title{
+        font-size: x-large;
+        font-weight: 300;
+    }
+    .about-me .text p{
+        font-size: large;
+    }
+    .about-me .text .links a{
+        display: flex;
+        justify-content: space-between;
+        width: fit-content;
+    }
+    .goals div {
+        width: 100%;
+
+    }
+    .goals h2 {
+        font-size: x-large;
+    }
+    .goal-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .goal-card {
+        max-width: 60%;
+       
+    }
+
+    .goals p.title {
+        font-size: medium;
+    }
+
+    .goal-card h3 {
+        font-size: medium;
+    }
+
+    .goal-card p {
+        font-size: small;
+    }
+    .footer .contact-form {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .footer .reachout p {
+        font-size: large;
+        width: 60%;
+    }
+
+    .footer .contact-form .form-button {
+        align-self: center;
+    }
+    .footer .contact span {
+        display: flex;
+        justify-content: flex-start;
+        gap: 12px;
+        
+    } 
+    .footer .footnote{
+        width: 70%;
+    }
+
+    
+}
+@keyframes moveAcrossScreen {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
