@@ -140,7 +140,11 @@ body {
     font-size: x-large;
     font-weight: 300;
 }
-
+.hero-section .slackId-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
  
  .hero-section .slackId-section:hover{
    transform: scale(1.05);
@@ -153,8 +157,7 @@ body {
     text-align: center;
     position: relative;
     width: fit-content;
-    top: -4em;
-    right: -5em;
+
  }
 
  /* about me */
@@ -422,14 +425,12 @@ body {
         font-size: xx-large;
     }
     .hero-section .slackId-section{
-        position: relative; 
-       top: 3em; 
-       right: -1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         
     }
-    .hero-section .slackId-section p{
-        left: 2em;
-    }
+   
     .hero-section .slackId-section img{
         border-radius: 50%;
         background-color: var(--accent-color);
@@ -522,7 +523,9 @@ body {
 @media screen and (max-width: 600px) {
     .body{
         font-size: medium;
-        overflow-x: hidden;
+    
+        box-sizing: border-box;
+        max-width: 100%;
     }
     #navbar {
         display: flex;
@@ -557,10 +560,10 @@ body {
         border: none;
     }
     .hero-section {
-        padding: 1em;
+        
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
+       
         gap: 20px;
         align-items: center;
         max-height:fit-content;
@@ -572,12 +575,7 @@ body {
        width: 80%;
        font-size: larger;
     }
-    .hero-section .slackId-section{
-        position: relative;
-        right: 0;
-        left: 0;
-      } 
-    
+   
       .hero-section .slackId-section p{
         font-size: large;
       }
